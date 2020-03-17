@@ -18,7 +18,35 @@ connection = psycopg2.connect(dbname=DB_NAME, user=DB_USER,
 cursor = connection.cursor()
 print("cursor:", cursor)
 
+# table creation
+
+query = '''
+creat table if doesn't exist
+'''
+
 cursor.execute('SELECT * from test_table;')
 
 result= cursor.fetchone()
-print('result:', result
+print('result:', result)
+
+#data insertion
+
+insertion_query ="""
+insert into test_table (name, data)
+values
+
+
+"""
+cursor.execute(insertion_query)
+
+cursor.execute("select * from test_table")
+result = cursor.fetchall()
+print("result:", len(result))
+
+
+# actually save the transactions
+connection.commit()
+
+
+
+
